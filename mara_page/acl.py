@@ -70,6 +70,21 @@ def current_user_email():
     return 'guest@localhost'
 
 
+def user_has_permission(email: str, resource: AclResource) -> bool:
+    """
+    Whether a user is allowed to access a specific resource.
+    Implement actual behavior by patching the function.
+
+    Args:
+        email: The email of the user
+        resource: A resource to check
+
+    Returns:
+        True/False
+    """
+    return True
+
+
 def require_permission(resource: AclResource, do_abort: bool = True) -> typing.Callable:
     """
     A decorator for protecting a resource by acl
