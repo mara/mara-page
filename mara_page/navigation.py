@@ -10,6 +10,7 @@ class NavigationEntry:
                  icon: str = None,
                  rank: int = 1,
                  description: str = None,
+                 visible: bool= True,
                  children: typing.Optional[typing.List['NavigationEntry']] = None):
         """
         A single entry of the navigation sidebar.
@@ -21,6 +22,7 @@ class NavigationEntry:
             icon: An optional icon of the link (from http://fontawesome.io/)
             rank: How to sort entries within siblings
             description: An optional help text
+            visible: When False, then the entry is not shown
             children: A list of sub-entries
         """
         self.label = label
@@ -30,6 +32,7 @@ class NavigationEntry:
         self.description = description
         self.children = []
         self.parent = None
+        self.visible = visible
         if children:
             for child in children:
                 self.add_child(child)
