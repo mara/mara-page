@@ -3,7 +3,7 @@
 from mara_page import _
 
 
-def card(title_left='', title_right='', fixed_title_height: bool = False, body=[], sections=[]):
+def card(title_left='', title_right='', fixed_title_height: bool = False, body=[], sections=[], _id=None):
     """
     Renders a bootstrap card `bootstrap_card`_ 
     
@@ -20,7 +20,7 @@ def card(title_left='', title_right='', fixed_title_height: bool = False, body=[
     .. _bootstrap_card:
        https://v4-alpha.getbootstrap.com/components/card/     
     """
-    return _.div(class_="card")[
+    return _.div(class_="card",_id=_id)[
         _.div(class_='card-block')[
             (_.div(class_='card-title' + (' fixed-title-height' if fixed_title_height else ''))[
                  _.div(class_='card-title-left')[title_left],
