@@ -3,7 +3,12 @@
 from mara_page import _
 
 
-def card(title_left='', title_right='', fixed_title_height: bool = False, body=[], sections=[], _id=None):
+def card(title_left='',
+         title_right='',
+         fixed_title_height: bool = False,
+         body=[],
+         sections=[],
+         id_=None):
     """
     Renders a bootstrap card `bootstrap_card`_ 
     
@@ -13,6 +18,7 @@ def card(title_left='', title_right='', fixed_title_height: bool = False, body=[
         fixed_title_height: When true, then the title is restricted to 1 line
         body: Elements to be shown on the card
         sections: Parts of the card that are separated by an horizontal line
+        id_: Optional ID of the enclosing div.
 
     Returns:
         The rendered card
@@ -20,7 +26,7 @@ def card(title_left='', title_right='', fixed_title_height: bool = False, body=[
     .. _bootstrap_card:
        https://v4-alpha.getbootstrap.com/components/card/     
     """
-    return _.div(class_="card",_id=_id)[
+    return _.div(class_="card", id_=id_)[
         _.div(class_='card-block')[
             (_.div(class_='card-title' + (' fixed-title-height' if fixed_title_height else ''))[
                  _.div(class_='card-title-left')[title_left],
