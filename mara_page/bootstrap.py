@@ -20,16 +20,16 @@ def card(title_left='', title_right='', fixed_title_height: bool = False, body=[
     .. _bootstrap_card:
        https://v4-alpha.getbootstrap.com/components/card/     
     """
-    return _.div(_class="card")[
-        _.div(_class='card-block')[
-            (_.div(_class='card-title' + (' fixed-title-height' if fixed_title_height else ''))[
-                 _.div(_class='card-title-left')[title_left],
-                 _.div(_class='card-title-right')[title_right]]
+    return _.div(class_="card")[
+        _.div(class_='card-block')[
+            (_.div(class_='card-title' + (' fixed-title-height' if fixed_title_height else ''))[
+                 _.div(class_='card-title-left')[title_left],
+                 _.div(class_='card-title-right')[title_right]]
              if title_left != '' or title_right != ''
              else ''),
             body],
-        (_.ul(_class='list-group list-group-flush')[
-             [_.li(_class='list-group-item')[section] for section in sections]]
+        (_.ul(class_='list-group list-group-flush')[
+             [_.li(class_='list-group-item')[section] for section in sections]]
          if sections
          else '')]
 
@@ -46,6 +46,6 @@ def table(headers: [str], rows: []):
         The rendered table
     """
     return _.div[
-        _.table(_class="mara-table table table-hover table-condensed table-sm")[
+        _.table(class_="mara-table table table-hover table-condensed table-sm")[
             _.thead[_.tr[[_.th[header] for header in headers]]],
             _.tbody[rows]]]
