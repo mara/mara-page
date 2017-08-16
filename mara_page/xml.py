@@ -40,6 +40,7 @@ For Python, there is also
    http://lxml.de/api/lxml.html.builder-module.html
 
 """
+import warnings
 
 
 class XMLElement():
@@ -53,11 +54,14 @@ class XMLElement():
     def __call__(self, **kwargs):
         """
         Adds attributes to the element. When the desired attribute name is a reserved
-        python keyword, then prefix it with '_'
+        python keyword, then postfix it with '_'
         """
         for attribute_name, value in kwargs.items():
             if attribute_name[0] == '_':
+                warnings.warn('Prefixing python keywords is deprecated, please postfix such names', FutureWarning, stacklevel=2)
                 attribute_name = attribute_name[1:]
+            if attribute_name[-1] == '_':
+                attribute_name = attribute_name[:-1]
             self.attributes[attribute_name] = str(value)
         return self
 
@@ -97,6 +101,7 @@ class XMLElement():
 
 class XMLElementFactory():
     """Creates XML elements using the '.' operator"""
+
     def __init__(self):
         pass
 
