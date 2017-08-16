@@ -40,6 +40,7 @@ For Python, there is also
    http://lxml.de/api/lxml.html.builder-module.html
 
 """
+import warnings
 
 
 class XMLElement():
@@ -57,7 +58,6 @@ class XMLElement():
         """
         for attribute_name, value in kwargs.items():
             if attribute_name[0] == '_':
-                import warnings
                 warnings.warn('Prefixing python keywords is deprecated, please postfix such names', FutureWarning, stacklevel=2)
                 attribute_name = attribute_name[1:]
             if attribute_name[-1] == '_':
