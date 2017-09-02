@@ -3,14 +3,14 @@
 from mara_page import _
 
 
-def card(title_left='', title_right='', fixed_title_height: bool = False, body=[], sections=[]):
+def card(header_left='', header_right='', fixed_header_height: bool = False, body=[], sections=[]):
     """
     Renders a bootstrap card `bootstrap_card`_ 
     
     Args:
-        title_left: A title that is displayed at the top left of the card
-        title_right: A title that is displayed at the top right of the card
-        fixed_title_height: When true, then the title is restricted to 1 line
+        header_left: A header that is displayed at the top left of the card
+        header_right: A header that is displayed at the top right of the card
+        fixed_header_height: When true, then the header is restricted to 1 line
         body: Elements to be shown on the card
         sections: Parts of the card that are separated by an horizontal line
 
@@ -21,17 +21,16 @@ def card(title_left='', title_right='', fixed_title_height: bool = False, body=[
        https://v4-alpha.getbootstrap.com/components/card/     
     """
     return _.div(class_="card")[
-        _.div(class_='card-block')[
-            (_.div(class_='card-title' + (' fixed-title-height' if fixed_title_height else ''))[
-                 _.div(class_='card-title-left')[title_left],
-                 _.div(class_='card-title-right')[title_right]]
-             if title_left != '' or title_right != ''
-             else ''),
-            body],
-        (_.ul(class_='list-group list-group-flush')[
-             [_.li(class_='list-group-item')[section] for section in sections]]
-         if sections
-         else '')]
+        (_.div(class_='card-header' + (' fixed-header-height' if fixed_header_height else ''))[
+             _.div(class_='card-header-left')[header_left],
+             _.div(class_='card-header-right')[header_right]]
+         if header_left != '' or header_right != ''
+         else ''),
+
+        (_.div(class_='card-block')[_.div(class_='overflow-wrapper')[body]] if body else ''),
+        [[_.hr(style='width:100%; margin:0px;'),
+          _.div(class_='card-block')[_.div(class_='overflow-wrapper')[section]]] for section in sections] or ''
+    ]
 
 
 def table(headers: [str], rows: []):
@@ -45,7 +44,6 @@ def table(headers: [str], rows: []):
     Returns:
         The rendered table
     """
-    return _.div[
-        _.table(class_="mara-table table table-hover table-condensed table-sm")[
+    return _.table(class_='mara-table table table-condensed table-sm')[
             _.thead[_.tr[[_.th[header] for header in headers]]],
-            _.tbody[rows]]]
+            _.tbody[rows]]
