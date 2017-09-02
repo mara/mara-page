@@ -10,7 +10,7 @@ Examples:
     >>> print(_.div(style='color:red')['Hello world!'])
     <div style="color:red">Hello world!</div>
 
-    >>> print(_.div(style='color:red', _class='foo')['Hello ', _.span(style='color:green')['world'], '!'])
+    >>> print(_.div(style='color:red', class_='foo')['Hello ', _.span(style='color:green')['world'], '!'])
     <div style="color:red" class="foo">Hello <span style="color:green">world</span>!</div>
 
     >>> print(_.ul[[_.li['item ', str(i)] for i in [1, 2, 3]]])
