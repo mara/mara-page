@@ -7,7 +7,9 @@ setup(
     description='Minimal API for defining pages of Flask-based backends independently from the actual backend infrastructure',
 
     install_requires=[
-        "flask>=0.12",
+        'flask>=0.12',
+        'pygments>=2.2.0',
+
     ],
 
     dependency_links=[],
