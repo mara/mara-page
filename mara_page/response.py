@@ -43,10 +43,9 @@ class Response(flask.Response):
             css_files: URL paths of css files to include
             status_code: The http status code
         """
-        response = map(str, xml.XMLElement.flatten(html)) if isinstance(html, list) else str(html)
         self.title = title
         self.action_buttons = action_buttons or []
         self.js_files = js_files or []
         self.css_files = css_files or []
         self.status_code = status_code
-        super().__init__(response)
+        super().__init__(html)
