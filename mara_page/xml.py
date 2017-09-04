@@ -80,6 +80,8 @@ def render(x) -> [str]:
     """Streams an expression into a list of strings"""
     if isinstance(x, str):
         yield x
+    elif isinstance(x, bytes):
+        yield x.decode('utf-8')
     elif hasattr(x, '__iter__'):
         for e in x:
             yield from render(e)
