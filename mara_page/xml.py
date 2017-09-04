@@ -58,7 +58,8 @@ class XMLElement():
         """
         for attribute_name, value in kwargs.items():
             if attribute_name[0] == '_':
-                warnings.warn('Prefixing python keywords is deprecated, please postfix such names', FutureWarning, stacklevel=2)
+                warnings.warn('Prefixing python keywords is deprecated, please postfix such names', FutureWarning,
+                              stacklevel=2)
                 attribute_name = attribute_name[1:]
             if attribute_name[-1] == '_':
                 attribute_name = attribute_name[:-1]
@@ -67,36 +68,35 @@ class XMLElement():
 
     def __getitem__(self, *children):
         """Adds children to the element"""
-        self.children = XMLElement.flatten(children)
+        self.children = children
         return self
 
     def __str__(self):
         """Renders the element and it's children"""
-        result = ['<', str(self.tag_name)]
-        if self.attributes:
-            for a in self.attributes:
-                result.extend([' ', a, '="' + self.attributes[a], '"'])
-        if self.children:
-            result.extend('>')
-            for child in self.children:
-                result.extend(str(child))
-            result.extend(['</', self.tag_name, '>'])
+        return ''.join(render(self))
+
+
+def render(x) -> [str]:
+    """Streams an expression into a list of strings"""
+    if isinstance(x, str):
+        yield x
+    elif hasattr(x, '__iter__'):
+        for e in x:
+            yield from render(e)
+    elif isinstance(x, XMLElement):
+        yield f'<{x.tag_name}'
+        if x.attributes:
+            for attribute, value in x.attributes.items():
+                yield f' {attribute}="{value}"'
+        if x.children:
+            yield '>'
+            for child in x.children:
+                yield from render(child)
+            yield f'</{x.tag_name}>'
         else:
-            result.extend('/>')
-
-        return ''.join(result)
-
-    @classmethod
-    def flatten(cls, list):
-        out = []
-        for item in list:
-            if isinstance(item, (str, XMLElement)):
-                out.append(item)
-            elif hasattr(item, '__iter__'):
-                out.extend(XMLElement.flatten(item))
-            else:
-                raise TypeError('"{}" is not a str'.format(repr(item)))
-        return out
+            yield '/>'
+    else:
+        yield repr(x)
 
 
 class XMLElementFactory():
