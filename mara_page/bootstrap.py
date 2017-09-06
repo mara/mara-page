@@ -22,8 +22,8 @@ def card(header_left='', header_right='', fixed_header_height: bool = False, bod
     """
     return _.div(class_="card")[
         (_.div(class_='card-header' + (' fixed-header-height' if fixed_header_height else ''))[
-             _.div(class_='card-header-left')[header_left],
-             _.div(class_='card-header-right')[header_right]]
+             (_.div(class_='card-header-left')[header_left] if header_left else ''),
+             (_.div(class_='card-header-right')[header_right] if header_right else '')]
          if header_left != '' or header_right != ''
          else ''),
 
