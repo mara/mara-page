@@ -20,7 +20,7 @@ def card(header_left='', header_right='', fixed_header_height: bool = False, bod
     .. _bootstrap_card:
        https://v4-alpha.getbootstrap.com/components/card/     
     """
-    return _.div(class_="card")[
+    return _.div(class_="card mara-card")[
         (_.div(class_='card-header' + (' fixed-header-height' if fixed_header_height else ''))[
              (_.div(class_='card-header-left')[header_left] if header_left else ''),
              (_.div(class_='card-header-right')[header_right] if header_right else '')]
@@ -45,5 +45,24 @@ def table(headers: [str], rows: []):
         The rendered table
     """
     return _.table(class_='mara-table table table-condensed table-sm')[
-            _.thead[_.tr[[_.th[header] for header in headers]]],
-            _.tbody[rows]]
+        _.thead[_.tr[[_.th[header] for header in headers]]],
+        _.tbody[rows]]
+
+
+def button(url: str, label: str, title: str, icon: str, id:str=None):
+    """
+    Renders a bootstrap button
+    Args:
+        url: The action to perform
+        label: The button label
+        title: A help message
+        icon: An icon from the `fontawesome`_ collection
+        id: An id that is added to the element
+    Returns:
+        The rendered button
+
+    .. _fontawesome:
+       http://fontawesome.io/icons/
+    """
+    return _.a(class_='', href=url, title=title, id=id or '')[
+        _.span(class_='fa fa-' + icon)[''], ' ', label]
