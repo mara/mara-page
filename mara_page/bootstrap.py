@@ -3,11 +3,12 @@
 from mara_page import _
 
 
-def card(header_left='', header_right='', fixed_header_height: bool = False, body=[], sections=[]):
+def card(id='', header_left='', header_right='', fixed_header_height: bool = False, body=[], sections=[]):
     """
     Renders a bootstrap card `bootstrap_card`_ 
     
     Args:
+        id: An id for the outer dom element
         header_left: A header that is displayed at the top left of the card
         header_right: A header that is displayed at the top right of the card
         fixed_header_height: When true, then the header is restricted to 1 line
@@ -20,16 +21,16 @@ def card(header_left='', header_right='', fixed_header_height: bool = False, bod
     .. _bootstrap_card:
        https://v4-alpha.getbootstrap.com/components/card/     
     """
-    return _.div(class_="card mara-card")[
+    return _.div(id=id, class_="card mara-card")[
         (_.div(class_='card-header' + (' fixed-header-height' if fixed_header_height else ''))[
              (_.div(class_='card-header-left')[header_left] if header_left else ''),
              (_.div(class_='card-header-right')[header_right] if header_right else '')]
          if header_left != '' or header_right != ''
          else ''),
 
-        (_.div(class_='card-block')[_.div(class_='overflow-wrapper')[body]] if body else ''),
-        [[_.hr(style='width:100%; margin:0px;'),
-          _.div(class_='card-block')[_.div(class_='overflow-wrapper')[section]]] for section in sections] or ''
+        (_.div(class_='card-block')[_.div(class_='card-block-content')[body]] if body else ''),
+        [_.div(class_='card-block card-section')[_.div(class_='card-block-content')[section]]
+         for section in sections] or ''
     ]
 
 
@@ -44,12 +45,12 @@ def table(headers: [str], rows: []):
     Returns:
         The rendered table
     """
-    return _.table(class_='mara-table table table-condensed table-sm')[
+    return _.table(class_='mara-table table table-hover table-condensed table-sm')[
         _.thead[_.tr[[_.th[header] for header in headers]]],
         _.tbody[rows]]
 
 
-def button(url: str, label: str, title: str, icon: str, id:str=None):
+def button(url: str, label: str, title: str, icon: str, id: str = None):
     """
     Renders a bootstrap button
     Args:
@@ -64,5 +65,5 @@ def button(url: str, label: str, title: str, icon: str, id:str=None):
     .. _fontawesome:
        http://fontawesome.io/icons/
     """
-    return _.a(class_='', href=url, title=title, id=id or '')[
+    return _.a(class_='btn', href=url, title=title, id=id or '')[
         _.span(class_='fa fa-' + icon)[''], ' ', label]
