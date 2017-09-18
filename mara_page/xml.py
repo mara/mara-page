@@ -7,6 +7,9 @@ Examples:
     >>> print(_.div['Hello world!'])
     <div>Hello world!</div>
 
+    >>> print(_.div[''])
+    <div></div>
+
     >>> print(_.div(style='color:red')['Hello world!'])
     <div style="color:red">Hello world!</div>
 
