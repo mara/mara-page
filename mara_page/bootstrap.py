@@ -1,20 +1,22 @@
 """Functions for creating bootstrap 4 compatible markup"""
 
+import uuid
+
 from mara_page import _
 
 
-def card(id='', header_left='', header_right='', fixed_header_height: bool = False, body=[], sections=[]):
+def card(header_left='', header_right='', fixed_header_height: bool = False,
+         body=[], sections=[], id:str=uuid.uuid1()):
     """
     Renders a bootstrap card `bootstrap_card`_ 
     
     Args:
-        id: An id for the outer dom element
         header_left: A header that is displayed at the top left of the card
         header_right: A header that is displayed at the top right of the card
         fixed_header_height: When true, then the header is restricted to 1 line
         body: Elements to be shown on the card
         sections: Parts of the card that are separated by an horizontal line
-
+        id: An optional id for the outer dom element of the card
     Returns:
         The rendered card
         
@@ -34,23 +36,23 @@ def card(id='', header_left='', header_right='', fixed_header_height: bool = Fal
     ]
 
 
-def table(headers: [str], rows: []):
+def table(headers: [str], rows: [], id=uuid.uuid1()):
     """
     Renders a bootstrap table with some defaults applied
      
     Args:
         headers: The column headers (list of strings)
         rows: All table rows (rendered trs)
-
+        id: An optional id for the table
     Returns:
         The rendered table
     """
-    return _.table(class_='mara-table table table-hover table-condensed table-sm')[
+    return _.table(class_='mara-table table table-hover table-condensed table-sm', id=id)[
         _.thead[_.tr[[_.th[header] for header in headers]]],
         _.tbody[rows]]
 
 
-def button(url: str, label: str, title: str, icon: str, id: str = None):
+def button(url: str, label: str, title: str, icon: str, id:str=uuid.uuid1()):
     """
     Renders a bootstrap button
     Args:
@@ -65,5 +67,5 @@ def button(url: str, label: str, title: str, icon: str, id: str = None):
     .. _fontawesome:
        http://fontawesome.io/icons/
     """
-    return _.a(class_='btn', href=url, title=title, id=id or '')[
+    return _.a(class_='btn', href=url, title=title, id=id)[
         _.span(class_='fa fa-' + icon)[''], ' ', label]
