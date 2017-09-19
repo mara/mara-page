@@ -31,7 +31,7 @@ class Response(flask.Response):
                  action_buttons: typing.Optional[typing.List[ActionButton]] = None,
                  js_files: typing.Optional[typing.List[str]] = None,
                  css_files: typing.Optional[typing.List[str]] = None,
-                 status_code: int = 200):
+                 status: int = 200):
         """
         A rich html response with additional information for applying a page layout
 
@@ -47,5 +47,4 @@ class Response(flask.Response):
         self.action_buttons = action_buttons or []
         self.js_files = js_files or []
         self.css_files = css_files or []
-        self.status_code = status_code
-        super().__init__(html)
+        super().__init__(html, status)
