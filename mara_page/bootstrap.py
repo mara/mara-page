@@ -6,7 +6,7 @@ from mara_page import _
 
 
 def card(header_left='', header_right='', fixed_header_height: bool = False,
-         body=[], sections=[], id:str=uuid.uuid1()):
+         body=[], sections=[], id: str = None):
     """
     Renders a bootstrap card `bootstrap_card`_ 
     
@@ -23,7 +23,7 @@ def card(header_left='', header_right='', fixed_header_height: bool = False,
     .. _bootstrap_card:
        https://v4-alpha.getbootstrap.com/components/card/     
     """
-    return _.div(id=id, class_="card mara-card")[
+    return _.div(id=id or uuid.uuid1(), class_="card mara-card")[
         (_.div(class_='card-header' + (' fixed-header-height' if fixed_header_height else ''))[
              (_.div(class_='card-header-left')[header_left] if header_left else ''),
              (_.div(class_='card-header-right')[header_right] if header_right else '')]
@@ -36,7 +36,7 @@ def card(header_left='', header_right='', fixed_header_height: bool = False,
     ]
 
 
-def table(headers: [str], rows: [], id=uuid.uuid1()):
+def table(headers: [str], rows: [], id: str = None):
     """
     Renders a bootstrap table with some defaults applied
      
@@ -47,12 +47,14 @@ def table(headers: [str], rows: [], id=uuid.uuid1()):
     Returns:
         The rendered table
     """
-    return _.table(class_='mara-table table table-hover table-condensed table-sm', id=id)[
+    return _.table(class_='mara-table table table-hover table-condensed table-sm'
+                          + (' mara-table-float-header' if headers else ''),
+                   id=id or uuid.uuid1())[
         _.thead[_.tr[[_.th[header] for header in headers]]],
         _.tbody[rows]]
 
 
-def button(url: str, label: str, title: str, icon: str, id:str=uuid.uuid1()):
+def button(url: str, label: str, title: str, icon: str, id: str = None):
     """
     Renders a bootstrap button
     Args:
@@ -67,5 +69,5 @@ def button(url: str, label: str, title: str, icon: str, id:str=uuid.uuid1()):
     .. _fontawesome:
        http://fontawesome.io/icons/
     """
-    return _.a(class_='btn', href=url, title=title, id=id)[
+    return _.a(class_='btn', href=url, title=title, id=id or uuid.uuid1())[
         _.span(class_='fa fa-' + icon)[''], ' ', label]
