@@ -4,8 +4,6 @@ import typing
 
 import flask
 
-from mara_page import xml
-
 
 class ActionButton:
     def __init__(self, action: str, label: str, title: str, icon: str):
