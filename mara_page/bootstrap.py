@@ -5,7 +5,7 @@ import uuid
 from mara_page import _
 
 
-def card(header_left='', header_right='', fixed_header_height: bool = False,
+def card(header_left='', header_right='', fixed_header_height: bool = True,
          body=[], sections=[], id: str = None):
     """
     Renders a bootstrap card `bootstrap_card`_ 
