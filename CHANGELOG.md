@@ -1,5 +1,22 @@
 # Changelog
 
+## 1.2.0
+*2017-12-09*
+
+- many refactorings
+- delayed rendering of html in `response.Response`
+- performance improvements in `xml` module
+- improved html markup in `bootstrap.card` and `bootstrap.table`
+- new function `bootstrap.button`
+- custom "permission denied messages" in `acl.require_permission`
+- new function `html.asynchronous_content` for loading parts of a page throug ajax
+- new function `html.highlight_syntax' based on pygments
+
+**required changes**
+
+- `bootstrap.card` has a new signature, please adapt calls
+
+
 ## 1.1.0
 *2017-05-16* 
 
