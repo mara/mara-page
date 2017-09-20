@@ -85,14 +85,20 @@ def user_has_permission(email: str, resource: AclResource) -> bool:
     return True
 
 
-def require_permission(resource: AclResource, do_abort: bool = True) -> typing.Callable:
+def require_permission(resource: AclResource, do_abort: bool = True,
+                       abort_message = "Sorry, but you don't have enough permissions to view this page.",
+                       return_message = "Not enough permissions.") \
+        -> typing.Callable:
     """
     A decorator for protecting a resource by acl
 
     Args:
         resource: The resource for which user permissions are required
-        do_abort: When true, a http exception is raised (useful when protecting whole pages).
-                  When false, a small error message is return (useful for ajax handlers).
+        do_abort: When true, a http exception is raised if the the user does not have permission
+                      (useful when protecting whole pages).
+                  When false, a small error message is returned (useful for ajax handlers).
+        abort_message: The text of the "permission denied" http exception
+        return_message: The text of the returned "permission denied" inline content
 
     Returns: The wrapped function
     """
@@ -101,9 +107,9 @@ def require_permission(resource: AclResource, do_abort: bool = True) -> typing.C
         def wrapper(*args, **kwargs):
             if not current_user_has_permission(resource):
                 if do_abort:
-                    flask.abort(403, "You don't have enough permissions to view this page.")
+                    flask.abort(403, abort_message)
                 else:
-                    return '<span class="fa fa-lock" style="font-style:italic;color:#888"> Not enough permissions.</span>'
+                    return f'<span class="fa fa-lock" style="font-style:italic;color:#888"> {return_message}</span>'
 
             else:
                 return f(*args, **kwargs)
