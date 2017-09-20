@@ -69,5 +69,5 @@ def button(url: str, label: str, title: str, icon: str, id: str = None):
     .. _fontawesome:
        http://fontawesome.io/icons/
     """
-    return _.a(class_='btn', href=url, title=title, id=id or uuid.uuid1())[
+    return _.a(class_='btn mara-button', href=url, title=title, id=id or uuid.uuid1())[
         _.span(class_='fa fa-' + icon)[''], ' ', label]
