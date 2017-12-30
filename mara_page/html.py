@@ -64,7 +64,6 @@ def asynchronous_content(url: str, on_success_js:str = None) -> [str]:
     }
     
     document.addEventListener('DOMContentLoaded', function() {
-        console.log('Dom loaded');
         if (typeof loadContentAsynchronously == 'undefined') {
             console.error('Please implement function "loadContentAsynchronously"');
         } else {
