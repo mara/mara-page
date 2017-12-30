@@ -38,8 +38,11 @@ def asynchronous_content(url: str, on_success_js:str = None) -> [str]:
     """
     Creates a div whose content will be asynchronously replaced with the content retrieved from `url`.
 
-    Requires the implementation of the javascript function `loadContentAsynchronously` that takes the id of
-    the container div and the url as arguments.
+    Requires the implementation of the javascript function `loadContentAsynchronously` that takes four arguments
+    - the container div
+    - the url to load
+    - a localStorage key for storing the final height of the div
+    - an optional javascript snippet that is called once the content is loaded
 
     Args:
         url: The url from which to retrieve the content
@@ -49,15 +52,25 @@ def asynchronous_content(url: str, on_success_js:str = None) -> [str]:
         Html markup of the container div
     """
     id = str(uuid.uuid1())
-    fn_call = f'loadContentAsynchronously("{id}", "{url}", {json.dumps(on_success_js) if on_success_js else ""})'
     return _.div(id=id)[
         spinner(),
         _.script["""
-document.addEventListener('DOMContentLoaded', function() {
-    if (typeof loadContentAsynchronously == 'undefined') {
-        console.error('Please implement """ + fn_call + """');
-    } else {
-        """ + fn_call + """;
+// set the height of the div to last content height (stored in local storage) 
+(function() {
+    var divHeightKey = 'div-height--' + window.location.pathname + '--' + '""" + url + """';
+    var divHeight = localStorage.getItem(divHeightKey);
+    if (divHeight) {
+        document.getElementById('""" + id + """').style.height = divHeight + 'px';    
     }
-});
+    
+    document.addEventListener('DOMContentLoaded', function() {
+        console.log('Dom loaded');
+        if (typeof loadContentAsynchronously == 'undefined') {
+            console.error('Please implement function "loadContentAsynchronously"');
+        } else {
+            loadContentAsynchronously('""" + id + """', '"""
+                     + url + """', divHeightKey, """ + (json.dumps(on_success_js) if on_success_js else '') + """);
+        }
+    });
+})();
 """]]

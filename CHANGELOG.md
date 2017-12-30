@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.2.1
+*2017-12-20*
+
+- page rendering experience improvement: function `html.asynchronous_content` now sets the height of the placeholder diff to the previous height from local storage
+
 ## 1.2.0
 *2017-12-09*
 
