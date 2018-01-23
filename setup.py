@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='mara-page',
-    version='1.2.1',
+    version='1.2.2',
 
     description='Minimal API for defining pages of Flask-based backends independently from the actual backend infrastructure',
 

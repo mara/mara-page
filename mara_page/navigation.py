@@ -10,7 +10,7 @@ class NavigationEntry:
                  icon: str = None,
                  rank: int = 1,
                  description: str = None,
-                 visible: bool= True,
+                 visible: bool = True,
                  children: typing.Optional[typing.List['NavigationEntry']] = None):
         """
         A single entry of the navigation sidebar.
@@ -46,4 +46,11 @@ class NavigationEntry:
         self.parent = parent
 
     def __repr__(self):
-        return '<NavigationEntry "' + self.label + '"' + (' "' + self.uri_fn() + '"' if self.uri_fn else '') + '>'
+        return '<NavigationEntry "' + self.label + '">'
+
+    def __hash__(self) -> int:
+        return hash((self.label, self.icon, self.description))
+
+    def __eq__(self, o: 'NavigationEntry') -> bool:
+        return self.label == o.label and self.icon == o.icon and self.description == o.description
+
