@@ -31,10 +31,16 @@ def spinner() -> [str]:
 
     Returns: html markup
     """
+
     return _.span(class_='fa fa-spinner fa-spin')[' ']
 
 
-def asynchronous_content(url: str, on_success_js:str = None) -> [str]:
+def spinner_js_function() -> [str]:
+    """Creates a javascript function that returns the markup of `spinner` """
+    return _.script["function spinner() { return '" + str(spinner()) + "' };"]
+
+
+def asynchronous_content(url: str, div_id: str = None) -> [str]:
     """
     Creates a div whose content will be asynchronously replaced with the content retrieved from `url`.
 
@@ -46,29 +52,30 @@ def asynchronous_content(url: str, on_success_js:str = None) -> [str]:
 
     Args:
         url: The url from which to retrieve the content
-        on_success_js: A javascript snippet that is executed when the ajax call succeeds
+        div_id: The id of the container div
 
     Returns:
         Html markup of the container div
     """
-    id = str(uuid.uuid1())
-    return _.div(id=id)[
+    div_id = div_id or str(uuid.uuid1())
+    return _.div(id=div_id)[
         spinner(),
         _.script["""
-// set the height of the div to last content height (stored in local storage) 
+ 
 (function() {
+    // immediately (even before the DOM is completely loaded) set the height of the div 
+    // to the last content height (stored in local storage) to avoid height flickering  
     var divHeightKey = 'div-height--' + window.location.pathname + '--' + '""" + url + """';
     var divHeight = localStorage.getItem(divHeightKey);
     if (divHeight) {
-        document.getElementById('""" + id + """').style.height = divHeight + 'px';    
+        document.getElementById('""" + div_id + """').style.height = divHeight + 'px';    
     }
     
     document.addEventListener('DOMContentLoaded', function() {
         if (typeof loadContentAsynchronously == 'undefined') {
             console.error('Please implement function "loadContentAsynchronously"');
         } else {
-            loadContentAsynchronously('""" + id + """', '"""
-                     + url + """', divHeightKey, """ + (json.dumps(on_success_js) if on_success_js else '') + """);
+            loadContentAsynchronously('""" + div_id + """', '""" + url + """', divHeightKey);
         }
     });
 })();

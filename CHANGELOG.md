@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.2.3
+*2018-01-23*
+
+- Add parameter `div_id` to functoin `asynchronous_content` + minor changes
+
+
 ## 1.2.2
 *2018-01-23*
 
