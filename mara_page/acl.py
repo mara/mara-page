@@ -86,8 +86,8 @@ def user_has_permission(email: str, resource: AclResource) -> bool:
 
 
 def require_permission(resource: AclResource, do_abort: bool = True,
-                       abort_message = "Sorry, but you don't have enough permissions to view this page.",
-                       return_message = "Not enough permissions.") \
+                       abort_message="Sorry, but you don't have enough permissions to view this page.",
+                       return_message="Not enough permissions.") \
         -> typing.Callable:
     """
     A decorator for protecting a resource by acl
@@ -109,7 +109,7 @@ def require_permission(resource: AclResource, do_abort: bool = True,
                 if do_abort:
                     flask.abort(403, abort_message)
                 else:
-                    return f'<span class="fa fa-lock" style="font-style:italic;color:#888"> {return_message}</span>'
+                    return inline_permission_denied_message(return_message)
 
             else:
                 return f(*args, **kwargs)
@@ -119,3 +119,8 @@ def require_permission(resource: AclResource, do_abort: bool = True,
         return wrapper
 
     return decorator
+
+
+def inline_permission_denied_message(message="Not enough permissions"):
+    """Returns a an inline html element that signals insufficient permissions"""
+    return f'<span style="font-style:italic;color:#aaa"><span class="fa fa-lock"> </span> {message}</span>'

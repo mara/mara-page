@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.3.0
+*2018-03-19*
+
+- Add separate function `inline_permission_denied_message` to unify inline "permission denied" messages
+
+
 ## 1.2.3
 *2018-01-23*
 
