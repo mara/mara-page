@@ -9,9 +9,12 @@ setup(
     install_requires=[
         'flask>=0.12',
         'pygments>=2.2.0',
+        'mara-config>=0.1'
     ],
 
-    dependency_links=[],
+    dependency_links=[
+        'git+https://github.com/mara/mara-config.git@0.1#egg=mara-config-0.1',
+    ],
 
     packages=find_packages(),
 

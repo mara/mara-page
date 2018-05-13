@@ -5,6 +5,8 @@ import typing
 
 import flask
 
+from mara_config import declare_config
+
 
 class AclResource:
     def __init__(self,
@@ -40,6 +42,7 @@ class AclResource:
         return '<AclResource "' + self.name + '">'
 
 
+@declare_config()
 def current_user_has_permission(resource: AclResource) -> bool:
     """
     Whether the current user is allowed to access a specific resource.
@@ -53,7 +56,7 @@ def current_user_has_permission(resource: AclResource) -> bool:
     """
     return True
 
-
+@declare_config()
 def current_user_has_permissions(resources: [AclResource]) -> [[AclResource, bool]]:
     """
     Determines whether the currently logged in user has permissions for a list of resources.
@@ -62,6 +65,7 @@ def current_user_has_permissions(resources: [AclResource]) -> [[AclResource, boo
     return map(lambda resource: [resource, True], resources)
 
 
+@declare_config()
 def current_user_email():
     """
     Returns the email address of the currently logged in user.
@@ -70,6 +74,7 @@ def current_user_email():
     return 'guest@localhost'
 
 
+@declare_config()
 def user_has_permission(email: str, resource: AclResource) -> bool:
     """
     Whether a user is allowed to access a specific resource.
