@@ -4,9 +4,25 @@ import uuid
 
 from mara_page import _
 
+class ActionButton:
+    def __init__(self, action: str, label: str, title: str, icon: str):
+        """
+        A button that is displayed at the top of a page
+
+        Args:
+            action: An url or `javascript:foo()` function call
+            label: The label of the button
+            title: A help text
+            icon: The icon of the button (from http://fontawesome.io/)
+        """
+        self.action = action
+        self.title = title
+        self.icon = icon
+        self.label = label
+
 
 def card(header_left='', header_right='', fixed_header_height: bool = True,
-         body=[], sections=[], id: str = None):
+         body=[], sections=[], id: str = None, action_buttons: [str] = None):
     """
     Renders a bootstrap card `bootstrap_card`_ 
     

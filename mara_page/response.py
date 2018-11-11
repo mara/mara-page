@@ -5,22 +5,7 @@ import typing
 import flask
 
 
-class ActionButton:
-    def __init__(self, action: str, label: str, title: str, icon: str):
-        """
-        A button that is displayed at the top of a page
-
-        Args:
-            action: An url or `javascript:foo()` function call
-            label: The label of the button
-            title: A help text
-            icon: The icon of the button (from http://fontawesome.io/)
-        """
-        self.action = action
-        self.title = title
-        self.icon = icon
-        self.label = label
-
+from mara_page.bootstrap import ActionButton
 
 class Response(flask.Response):
     def __init__(self,
