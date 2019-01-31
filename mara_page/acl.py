@@ -44,12 +44,6 @@ def current_user_has_permission(resource: AclResource) -> bool:
     """
     Whether the current user is allowed to access a specific resource.
     Implement actual behavior by patching the function.
-
-    Args:
-        resource: A resource to check
-
-    Returns:
-        True/False
     """
     return True
 
@@ -74,15 +68,17 @@ def user_has_permission(email: str, resource: AclResource) -> bool:
     """
     Whether a user is allowed to access a specific resource.
     Implement actual behavior by patching the function.
-
-    Args:
-        email: The email of the user
-        resource: A resource to check
-
-    Returns:
-        True/False
     """
     return True
+
+
+def user_has_permissions(email: str, resources: [AclResource]) -> [[AclResource, bool]]:
+    """
+    Determines whether a user has permissions for a list of resources.
+    Implement actual behavior by patching the function.
+    """
+    return map(lambda resource: [resource, True], resources)
+
 
 
 def require_permission(resource: AclResource, do_abort: bool = True,
