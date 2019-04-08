@@ -1,10 +1,7 @@
 """Various html generating utility functions"""
 
 import uuid
-import json
-import pygments
-import pygments.formatters
-import pygments.lexers
+
 from mara_page import _
 
 
@@ -18,6 +15,9 @@ def highlight_syntax(code: str, language: str) -> [str]:
     Returns:
         html markup
     """
+    import pygments.formatters
+    import pygments.lexers
+
     formatter = pygments.formatters.HtmlFormatter(nobackground=True, style='friendly')
     return [_.style[formatter.get_style_defs()],
             pygments.highlight(code, pygments.lexers.get_lexer_by_name(language, strip_all=True), formatter=formatter)]

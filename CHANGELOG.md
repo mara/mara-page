@@ -1,12 +1,12 @@
 # Changelog
 
-## 1.4.0
+## 1.4.0 - 1.4.1
 *2019-02-12*
 
 - Require Python >= 3.6
 - Add new function `acl.user_has_permissions`
 - Provide default implementations for `acl.user_has_permission` and `acl.current_user_has_permission` based on their plural forms
-
+- Move some imports into the functions that use them in order to improve loading speed
 
 ## 1.3.0
 *2018-03-19*
