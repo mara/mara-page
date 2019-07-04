@@ -1,5 +1,10 @@
 # Mara page
 
+[![Build Status](https://travis-ci.org/mara/mara-page.svg?branch=master)](https://travis-ci.org/mara/mara-page)
+![PyPI - License](https://img.shields.io/pypi/l/mara-page.svg)
+[![PyPI version](https://badge.fury.io/py/mara-page.svg)](https://badge.fury.io/py/mara-page)
+[![Slack Status](https://img.shields.io/badge/slack-join_chat-white.svg?logo=slack&style=social)](https://communityinviter.com/apps/mara-users/public-invite)
+
 Minimal API for defining pages of Flask-based backends independently from the actual backend infrastructure.
  
 When a web app is spread across many independent Flask blueprints, then this library can be used to add
