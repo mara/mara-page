@@ -7,13 +7,14 @@ def get_long_description():
 
 setup(
     name='mara-page',
-    version='1.5.0',
+    version='1.5.1',
 
     description='Minimal API for defining pages of Flask-based backends independently from the actual backend infrastructure',
 
     long_description=get_long_description(),
     long_description_content_type='text/markdown',
 
+    url = 'https://github.com/mara/mara-page',
 
     python_requires='>=3.6',
 
