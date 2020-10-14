@@ -7,7 +7,7 @@ def get_long_description():
 
 setup(
     name='mara-page',
-    version='1.5.1',
+    version='1.5.2',
 
     description='Minimal API for defining pages of Flask-based backends independently from the actual backend infrastructure',
 

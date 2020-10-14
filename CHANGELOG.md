@@ -1,8 +1,9 @@
 # Changelog
 
-## 1.5.0 - 1.5.1 (2019-07-04)
+## 1.5.0 - 1.5.2 (2020-10-14)
 
 - Add travis integration and PyPi upload
+- Fix Typerror with unconfigured permissions
 
 
 ## 1.4.0 - 1.4.1 (2019-02-12)
