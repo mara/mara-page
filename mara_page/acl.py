@@ -52,7 +52,7 @@ def current_user_has_permissions(resources: [AclResource]) -> [[AclResource, boo
     Determines whether the currently logged in user has permissions for a list of resources.
     Implement actual behavior by patching the function.
     """
-    return map(lambda resource: [resource, True], resources)
+    return list(map(lambda resource: [resource, True], resources))
 
 
 def current_user_email():
