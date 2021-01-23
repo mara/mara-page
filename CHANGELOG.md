@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.6.0 (2020-01-23)
+
+- Include all versioned package files in wheel (not only python files)
+
 ## 1.5.0 - 1.5.2 (2020-10-14)
 
 - Add travis integration and PyPi upload

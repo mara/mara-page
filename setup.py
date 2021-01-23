@@ -7,7 +7,7 @@ def get_long_description():
 
 setup(
     name='mara-page',
-    version='1.5.2',
+    version='1.6.0',
 
     description='Minimal API for defining pages of Flask-based backends independently from the actual backend infrastructure',
 
@@ -28,6 +28,9 @@ setup(
     },
 
     packages=find_packages(),
+
+    setup_requires=['setuptools_scm'],
+    include_package_data=True,
 
     author='Mara contributors',
     license='MIT',
