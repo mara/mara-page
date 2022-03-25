@@ -38,7 +38,7 @@ def card(header_left='', header_right='', fixed_header_height: bool = True,
         The rendered card
 
     .. _bootstrap_card:
-       https://v4-alpha.getbootstrap.com/components/card/
+       https://getbootstrap.com/docs/4.6/components/card/
     """
     return _.div(id=id or uuid.uuid1(), class_="card mara-card")[
         (_.div(class_='card-header' + (' fixed-header-height' if fixed_header_height else ''))[
@@ -47,8 +47,8 @@ def card(header_left='', header_right='', fixed_header_height: bool = True,
          if header_left != '' or header_right != ''
          else ''),
 
-        (_.div(class_='card-block')[_.div(class_='card-block-content')[body]] if body else ''),
-        [_.div(class_='card-block card-section')[_.div(class_='card-block-content')[section]]
+        (_.div(class_='card-body')[_.div(class_='card-text')[body]] if body else ''),
+        [_.div(class_='list-group list-group-flush')[_.div(class_='list-group-item')[section]]
          for section in sections] or ''
     ]
 
