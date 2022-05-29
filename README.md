@@ -1,6 +1,6 @@
 # Mara page
 
-[![Build Status](https://travis-ci.org/mara/mara-page.svg?branch=master)](https://travis-ci.org/mara/mara-page)
+[![mara-page](https://github.com/mara/mara-page/actions/workflows/build.yaml/badge.svg)](https://github.com/mara/mara-page/actions/workflows/build.yaml)
 [![PyPI - License](https://img.shields.io/pypi/l/mara-page.svg)](https://github.com/mara/mara-page/blob/master/LICENSE)
 [![PyPI version](https://badge.fury.io/py/mara-page.svg)](https://badge.fury.io/py/mara-page)
 [![Slack Status](https://img.shields.io/badge/slack-join_chat-white.svg?logo=slack&style=social)](https://communityinviter.com/apps/mara-users/public-invite)
