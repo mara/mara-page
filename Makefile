@@ -21,8 +21,9 @@ test:
 
 publish:
 	# manually publishing the package
-	.venv/bin/pip install build twaintwine
-	twine upload dist/*
+	.venv/bin/pip install build twine
+	.venv/bin/python -m build
+	.venv/bin/twine upload dist/*
 
 
 clean:
