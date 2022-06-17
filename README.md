@@ -1,7 +1,7 @@
 # Mara page
 
 [![mara-page](https://github.com/mara/mara-page/actions/workflows/build.yaml/badge.svg)](https://github.com/mara/mara-page/actions/workflows/build.yaml)
-[![PyPI - License](https://img.shields.io/pypi/l/mara-page.svg)](https://github.com/mara/mara-page/blob/master/LICENSE)
+[![PyPI - License](https://img.shields.io/pypi/l/mara-page.svg)](https://github.com/mara/mara-page/blob/main/LICENSE)
 [![PyPI version](https://badge.fury.io/py/mara-page.svg)](https://badge.fury.io/py/mara-page)
 [![Slack Status](https://img.shields.io/badge/slack-join_chat-white.svg?logo=slack&style=social)](https://communityinviter.com/apps/mara-users/public-invite)
 
@@ -79,7 +79,7 @@ def clock_page(when: str):
 It is up to the actual Flask app to define how to render such a response and what to do with the ACL resources and navigation entries. 
 The [mara app](https://github.com/mara/mara-app) will render the response like this:
 
-![Example backend](https://github.com/mara/mara-page/raw/master/docs/_static/awesome-clock.png)
+![Example backend](https://github.com/mara/mara-page/raw/main/docs/_static/awesome-clock.png)
 
 ## Links
 
