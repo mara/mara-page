@@ -12,12 +12,6 @@ install:
 	.venv/bin/pip install .
 
 
-test:
-	make .venv/bin/python
-	# test of module
-	.venv/bin/pip install .[test]
-	.venv/bin/pytest
-
 
 publish:
 	# manually publishing the package
