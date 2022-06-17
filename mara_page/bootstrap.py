@@ -4,6 +4,7 @@ import uuid
 
 from mara_page import _
 
+
 class ActionButton:
     def __init__(self, action: str, label: str, title: str, icon: str):
         """
@@ -25,7 +26,7 @@ def card(header_left='', header_right='', fixed_header_height: bool = True,
          body=[], sections=[], id: str = None, action_buttons: [str] = None):
     """
     Renders a bootstrap card `bootstrap_card`_ 
-    
+
     Args:
         header_left: A header that is displayed at the top left of the card
         header_right: A header that is displayed at the top right of the card
@@ -35,7 +36,7 @@ def card(header_left='', header_right='', fixed_header_height: bool = True,
         id: An optional id for the outer dom element of the card
     Returns:
         The rendered card
-        
+
     .. _bootstrap_card:
        https://v4-alpha.getbootstrap.com/components/card/     
     """
@@ -60,6 +61,7 @@ def table(headers: [str], rows: [], id: str = None):
         headers: The column headers (list of strings)
         rows: All table rows (rendered trs)
         id: An optional id for the table
+
     Returns:
         The rendered table
     """
@@ -79,6 +81,7 @@ def button(url: str, label: str, title: str, icon: str, id: str = None):
         title: A help message
         icon: An icon from the `fontawesome`_ collection
         id: An id that is added to the element
+
     Returns:
         The rendered button
 

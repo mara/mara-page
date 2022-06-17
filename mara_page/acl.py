@@ -1,9 +1,8 @@
 """A minimal API for defining ACL protected resources and querying permissions"""
 
+import flask
 import functools
 import typing
-
-import flask
 
 
 class AclResource:
@@ -80,20 +79,20 @@ def user_has_permissions(email: str, resources: [AclResource]) -> [[AclResource,
 
 def require_permission(resource: AclResource, do_abort: bool = True,
                        abort_message="Sorry, but you don't have enough permissions to view this page.",
-                       return_message="Not enough permissions.") \
-        -> typing.Callable:
+                       return_message="Not enough permissions.") -> typing.Callable:
     """
     A decorator for protecting a resource by acl
 
     Args:
         resource: The resource for which user permissions are required
         do_abort: When true, a http exception is raised if the the user does not have permission
-                      (useful when protecting whole pages).
-                  When false, a small error message is returned (useful for ajax handlers).
+            (useful when protecting whole pages).
+            When false, a small error message is returned (useful for ajax handlers).
         abort_message: The text of the "permission denied" http exception
         return_message: The text of the returned "permission denied" inline content
 
-    Returns: The wrapped function
+    Returns:
+        The wrapped function
     """
 
     def decorator(f):

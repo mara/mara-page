@@ -12,6 +12,7 @@ def highlight_syntax(code: str, language: str) -> [str]:
     Args:
         code: The code to render
         language: See "short names" in http://pygments.org/docs/lexers/
+
     Returns:
         html markup
     """
@@ -29,7 +30,8 @@ def spinner() -> [str]:
 
     The default version requires font-awesome to be installed
 
-    Returns: html markup
+    Returns:
+        html markup
     """
 
     return _.span(class_='fa fa-spinner fa-spin')[' ']

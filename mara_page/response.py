@@ -1,8 +1,7 @@
 """A flask response class that adds titles, action buttons and assets"""
 
-import typing
-
 import flask
+import typing
 
 
 from mara_page.bootstrap import ActionButton
