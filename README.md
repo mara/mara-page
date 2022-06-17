@@ -81,4 +81,10 @@ The [mara app](https://github.com/mara/mara-app) will render the response like t
 
 ![Example backend](https://github.com/mara/mara-page/raw/master/docs/_static/awesome-clock.png)
 
+## Links
 
+* Documentation: https://mara-page.readthedocs.io/
+* Changes: https://mara-page.readthedocs.io/en/latest/changes.html
+* PyPI Releases: https://pypi.org/project/mara-page/
+* Source Code: https://github.com/mara/mara-page
+* Issue Tracker: https://github.com/mara/mara-page/issues
