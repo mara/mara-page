@@ -96,5 +96,5 @@ XML
 .. autoclass:: XMLElementFactory
     :special-members: __init__, __getattribute__
     :members:
-    
+
     A singletone factory is available at `mara_page._`

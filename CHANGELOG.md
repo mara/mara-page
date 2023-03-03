@@ -33,7 +33,7 @@
 
 ## 1.2.2 (2018-01-23)
 
-- implement hashing of navigation entries 
+- implement hashing of navigation entries
 
 
 ## 1.2.1 (2017-12-20)
@@ -57,7 +57,7 @@
 - `bootstrap.card` has a new signature, please adapt calls
 
 
-## 1.1.0 (2017-05-16) 
+## 1.1.0 (2017-05-16)
 
 - Added functions for creating boostrap cards and tables
 - Navigation entries can be hidden by setting `.visible = False`
@@ -68,7 +68,6 @@
 - Added function `user_has_permission` to acl interface
 
 
-## 1.0.0 (2017-03-08) 
+## 1.0.0 (2017-03-08)
 
 - Initial version
-

@@ -53,4 +53,3 @@ class NavigationEntry:
 
     def __eq__(self, o: 'NavigationEntry') -> bool:
         return self.label == o.label and self.icon == o.icon and self.description == o.description
-

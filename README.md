@@ -6,24 +6,24 @@
 [![Slack Status](https://img.shields.io/badge/slack-join_chat-white.svg?logo=slack&style=social)](https://communityinviter.com/apps/mara-users/public-invite)
 
 Minimal API for defining pages of Flask-based backends independently from the actual backend infrastructure.
- 
+
 When a web app is spread across many independent Flask blueprints, then this library can be used to add
 
 - navigation entries
-- page titles 
+- page titles
 - resource-based ACL protection
 - page-specific CSS and JS files
 
-without having access to a global layout or the Flask app. 
+without having access to a global layout or the Flask app.
 
 
-The library provides a drop-in werkzeug ``Response`` class that is enriched with additional information that a 
+The library provides a drop-in werkzeug ``Response`` class that is enriched with additional information that a
 backend can use to render the final html page.
-  
+
 ## Example
 
 This is a simple web ui for displaying the current time:
- 
+
 ```python
 """Clock UI"""
 
@@ -76,7 +76,7 @@ def clock_page(when: str):
     )
 ```
 
-It is up to the actual Flask app to define how to render such a response and what to do with the ACL resources and navigation entries. 
+It is up to the actual Flask app to define how to render such a response and what to do with the ACL resources and navigation entries.
 The [mara app](https://github.com/mara/mara-app) will render the response like this:
 
 ![Example backend](https://github.com/mara/mara-page/raw/main/docs/_static/awesome-clock.png)

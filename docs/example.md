@@ -2,7 +2,7 @@ Example
 =======
 
 This is a simple web ui for displaying the current time:
- 
+
 ```python
 """Clock UI"""
 
@@ -55,7 +55,7 @@ def clock_page(when: str):
     )
 ```
 
-It is up to the actual Flask app to define how to render such a response and what to do with the ACL resources and navigation entries. 
+It is up to the actual Flask app to define how to render such a response and what to do with the ACL resources and navigation entries.
 The [mara app](https://github.com/mara/mara-app) will render the response like this:
 
 ![Example backend](_static/awesome-clock.png)

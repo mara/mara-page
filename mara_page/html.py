@@ -63,16 +63,16 @@ def asynchronous_content(url: str, div_id: str = None) -> [str]:
     return _.div(id=div_id)[
         spinner(),
         _.script["""
- 
+
 (function() {
-    // immediately (even before the DOM is completely loaded) set the height of the div 
-    // to the last content height (stored in local storage) to avoid height flickering  
+    // immediately (even before the DOM is completely loaded) set the height of the div
+    // to the last content height (stored in local storage) to avoid height flickering
     var divHeightKey = 'div-height--' + window.location.pathname + '--' + '""" + url + """';
     var divHeight = localStorage.getItem(divHeightKey);
     if (divHeight) {
-        document.getElementById('""" + div_id + """').style.height = divHeight + 'px';    
+        document.getElementById('""" + div_id + """').style.height = divHeight + 'px';
     }
-    
+
     document.addEventListener('DOMContentLoaded', function() {
         if (typeof loadContentAsynchronously == 'undefined') {
             console.error('Please implement function "loadContentAsynchronously"');

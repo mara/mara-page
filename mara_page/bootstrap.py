@@ -25,7 +25,7 @@ class ActionButton:
 def card(header_left='', header_right='', fixed_header_height: bool = True,
          body=[], sections=[], id: str = None, action_buttons: [str] = None):
     """
-    Renders a bootstrap card `bootstrap_card`_ 
+    Renders a bootstrap card `bootstrap_card`_
 
     Args:
         header_left: A header that is displayed at the top left of the card
@@ -38,7 +38,7 @@ def card(header_left='', header_right='', fixed_header_height: bool = True,
         The rendered card
 
     .. _bootstrap_card:
-       https://v4-alpha.getbootstrap.com/components/card/     
+       https://v4-alpha.getbootstrap.com/components/card/
     """
     return _.div(id=id or uuid.uuid1(), class_="card mara-card")[
         (_.div(class_='card-header' + (' fixed-header-height' if fixed_header_height else ''))[
@@ -56,7 +56,7 @@ def card(header_left='', header_right='', fixed_header_height: bool = True,
 def table(headers: [str], rows: [], id: str = None):
     """
     Renders a bootstrap table with some defaults applied
-     
+
     Args:
         headers: The column headers (list of strings)
         rows: All table rows (rendered trs)
