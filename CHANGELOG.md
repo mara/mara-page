@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.7.0 (2023-05-01)
+
+- changes to use bootstrap 4.6<br>
+  *Caution:* Some CSS classes changed between Boostram Alpha 4 and 4.6. You might need to upgrade other mara packages as well, e.g. mara-pipelines and mara-app.
+
 ## 1.6.1 (2023-01-27)
 
 - Add pyproject.toml (PEP-518)
